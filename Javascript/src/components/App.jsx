@@ -63,10 +63,11 @@ export default class Game extends React.Component {
     });
   }
 
-  jumpTo(step) {
+  jumpTo(step, history) {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0,
+      history: history,
     });
   }
 
@@ -79,7 +80,7 @@ export default class Game extends React.Component {
       const desc = move ? `Move # ${move}` : 'Game start';
       return (
         <li key={move}>
-          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+          <a href="#" onClick={() => this.jumpTo(move, this.state.history.slice(0, move + 1))}>{desc}</a>
         </li>
       );
     });
