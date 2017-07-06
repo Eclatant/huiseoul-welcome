@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Game from './Game';
+import App from './App';
 
 ReactDOM.render(
-  <Game />,
+  <App />,
   document.querySelector('#root') as HTMLElement
 );
-registerServiceWorker();
