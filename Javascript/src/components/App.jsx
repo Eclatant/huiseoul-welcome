@@ -64,7 +64,7 @@ export default class Game extends React.Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares
+          squares
         }
       ]),
       stepNumber: history.length,
@@ -72,11 +72,11 @@ export default class Game extends React.Component {
     });
   }
 
-  jumpTo(step, history) {
+  jumpTo(step) {
     this.setState({
       stepNumber: step,
       xIsNext: step % 2 === 0,
-      history: history
+      history: history.slice(0, step + 1)
     });
   }
 
@@ -91,8 +91,7 @@ export default class Game extends React.Component {
         <li key={move}>
           <a
             href="#"
-            onClick={() =>
-              this.jumpTo(move, this.state.history.slice(0, move + 1))}
+            onClick={() => this.jumpTo(move)}
           >
             {desc}
           </a>
